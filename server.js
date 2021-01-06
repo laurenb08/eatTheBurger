@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
     connection.query("SELECT * FROM burgers;", function (err, data) {
         if (err) throw err;
 
-        res.redirect("/");
+        res.render("index", { burgers: data });
     });
 });
 
