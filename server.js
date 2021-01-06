@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var connection = mysql.createConnection({
@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "Murphy212!",
-    database: "wishes_db"
+    database: "burgers_db"
 });
 
 connection.connect(function (err) {
@@ -33,8 +33,15 @@ connection.connect(function (err) {
     console.log("connected as id " + connection.threadId);
 });
 
-var burgers =  {
-    {
-        name: 
-    }
-}
+app.get("/", function (req, res) {
+    connection.query("SELECT * FROM burgers;", function (err, data) {
+        if (err) throw err;
+
+        res.redirect("/");
+    });
+});
+
+app.listen(PORT, function () {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+});
