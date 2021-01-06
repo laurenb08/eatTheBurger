@@ -1,15 +1,25 @@
 <h1>Eat Da Burger!</h1>
 
+<form action="/" method="POST">
+	<textarea name = "burger" id = "" type="text" name="task"></textarea>
+
+	<button type="submit">Add a Burger</button>
+</form>
+
 <ul>
     {{#each burgers}}
     <li>
         <p>{{name}}</p>
+        <p>{{eaten}}</p>
     </li>
     {{/each}}
 </ul>
 
-<form action="/" method="POST">
-	<textarea name = "wish" id = "" type="text" name="task"></textarea>
-
-	<button type="submit">Submit</button>
-</form>
+<ul>
+    {{#each burgers}}
+    <li>
+        <p>{{name}}</p>
+        <p>{{eaten}}</p>
+    </li>
+    {{/each}}
+</ul>

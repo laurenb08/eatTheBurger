@@ -1,6 +1,6 @@
 //Dependencies
 var express = require("express");
-var expressHandlebars = require("express-handlebars");
+var exphbs = require("express-handlebars");
 var mysql = require("mysql");
 
 //create express app
@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var connection = mysql.createConnection({
@@ -35,6 +35,15 @@ connection.connect(function (err) {
 
 app.get("/", function (req, res) {
     connection.query("SELECT * FROM burgers;", function (err, data) {
+        if (err) throw err;
+
+        res.redirect("/");
+    });
+});
+
+app.post("/", function (req, res) {
+
+    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function (err, result) {
         if (err) throw err;
 
         res.redirect("/");
