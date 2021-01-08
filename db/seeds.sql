@@ -3,14 +3,14 @@ USE burgers_db;
 
 -- Insert a set of records.
 INSERT INTO
-  burgers (burger, eaten)
+  burgers (burger)
 VALUES
-  ('Cheeseburger', false);
+  ('Cheeseburger');
 INSERT INTO
-  burgers (burger, eaten)
+  burgers (burger)
 VALUES
-  ('Bacon Burger', false);
+  ('Bacon Burger');
 INSERT INTO
-  burgers (burger, eaten)
+  burgers (burger)
 VALUES
-  ('Whiskey River BBQ Burger', false);
+  ('Whiskey River BBQ Burger');
