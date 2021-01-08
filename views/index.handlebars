@@ -9,17 +9,13 @@
 <ul>
     {{#each burgers}}
     <li>
-        <p>{{this.name}}</p>
-        <p>{{this.eaten}}</p>
-    </li>
-    {{/each}}
-</ul>
+        {{name}}
 
-<ul>
-    {{#each burgers}}
-    <li>
-        <p>{{this.name}}</p>
-        <p>{{this.eaten}}</p>
+        <button class="change-eaten" data-id="{{id}}" data-eaten="{{eaten}}">
+            {{#if eaten}}YUM!{{/if}}
+        </button>
+
+        <button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
     </li>
     {{/each}}
 </ul>
