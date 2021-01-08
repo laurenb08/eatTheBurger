@@ -1,7 +1,6 @@
 var express = require("express");
 const burger = require("../models/burgers.js");
 var router = express.Router();
-var connection = require("../models/burgers.js");
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -30,7 +29,7 @@ router.get("/", function(req, res) {
     console.log("condition", condition);
   
     burger.update({
-      sleepy: req.body.eaten
+      eaten: req.body.eaten
     }, condition, function(result) {
       if (result.changedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404
