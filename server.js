@@ -1,7 +1,6 @@
 //Dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
-var mysql = require("mysql");
 
 //create express app
 var app = express();
@@ -16,23 +15,6 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "Murphy212!",
-    database: "burgers_db"
-});
-
-connection.connect(function (err) {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
-
-    console.log("connected as id " + connection.threadId);
-});
-
 app.get("/", function (req, res) {
     connection.query("SELECT * FROM burgers;", function (err, data) {
         if (err) throw err;
@@ -43,7 +25,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
 
-    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function (err, result) {
+    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function (err, data) {
         if (err) throw err;
 
         res.redirect("/");
