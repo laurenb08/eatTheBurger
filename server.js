@@ -15,22 +15,26 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.get("/", function (req, res) {
-    connection.query("SELECT * FROM burgers;", function (err, data) {
-        if (err) throw err;
+var routes = require ("./controllers/burgers_controller.js");
 
-        res.render("index", { burgers: data });
-    });
-});
+app.use(routes);
 
-app.post("/", function (req, res) {
+// app.get("/", function (req, res) {
+//     connection.query("SELECT * FROM burgers;", function (err, data) {
+//         if (err) throw err;
 
-    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function (err, data) {
-        if (err) throw err;
+//         res.render("index", { burgers: data });
+//     });
+// });
 
-        res.redirect("/");
-    });
-});
+// app.post("/", function (req, res) {
+
+//     connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function (err, data) {
+//         if (err) throw err;
+
+//         res.redirect("/");
+//     });
+// });
 
 app.listen(PORT, function () {
     // Log (server-side) when our server has started
