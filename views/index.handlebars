@@ -6,16 +6,22 @@
     <button type="submit">Add a Burger</button>
 </form>
 
+<h2>Eat these burgers!</h2>
+
 <ul>
-    {{#each burgers}}
-    <li>
-        {{name}}
+  {{#each burgers}}
+    {{#unless eaten}}
+      {{> burgers/burger-block eaten=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
 
-        <button class="change-eaten" data-id="{{id}}" data-eaten="{{eaten}}">
-            {{#if eaten}}YUM!{{/if}}
-        </button>
+<h2>You ate these burgers!</h2>
 
-        <button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
-    </li>
-    {{/each}}
+<ul>
+  {{#each burgers}}
+    {{#if eaten}}
+      {{> burgers/burger-block eaten=true}}
+    {{/if}}
+  {{/each}}
 </ul>
