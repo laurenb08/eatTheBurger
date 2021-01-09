@@ -1,11 +1,5 @@
 <h1>Eat Da Burger!</h1>
 
-<form action="/" method="POST">
-    <textarea name="burger" id="" type="text" name="task"></textarea>
-
-    <button type="submit">Add a Burger</button>
-</form>
-
 <h2>Eat these burgers!</h2>
 
 <ul>
@@ -25,3 +19,20 @@
     {{/if}}
   {{/each}}
 </ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="burger">
+  </div>
+
+  <div class="form-group">
+    <label for="eaten">Did you already eat this burger?</label><br>
+    <input type="radio" name="eaten" value="1" checked> I already ate this one!<br>
+    <input type="radio" name="eaten" value="0"> I haven't eaten this burger yet!
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
