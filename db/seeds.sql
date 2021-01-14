@@ -1,6 +1,5 @@
 CREATE DATABASE burgers_db;
 USE burgers_db;
-
 -- Insert a set of records.
 INSERT INTO
   burgers (burger)
