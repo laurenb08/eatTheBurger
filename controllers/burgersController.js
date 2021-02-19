@@ -5,19 +5,19 @@ const burger = require("../models/burger.js");
 
 router.get("/", function (req, res) {
   burger.all(function (data) {
-    var hbsObject = {
-      burgers: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+    // var hbsObject = {
+    //   burgers: data
+    // };
+    // console.log(hbsObject);
+    res.render("index", { burgers: data });
   });
 });
 
 router.post("/api/burgers", function (req, res) {
   burger.create([
-    "burger", "eaten"
+    "burger"
   ], [
-    req.body.burger, req.body.eaten
+    req.body.burger
   ], function (result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
