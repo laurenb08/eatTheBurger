@@ -6,7 +6,7 @@ var PORT = process.env.PORT || 8080;
 
 //create express app
 var app = express();
-
+require("dotenv").config();
 app.use(express.static("public"));
 
 //Set up express to handle data parsing
